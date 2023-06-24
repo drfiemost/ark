@@ -49,6 +49,7 @@ endif (BZIP2_FOUND)
 #
 # LZMA files
 #
+set(FPHSA_NAME_MISMATCHED TRUE)
 macro_optional_find_package(LibLZMA)
 
 macro_log_feature(LIBLZMA_FOUND "LibLZMA" "Liblzma is used for the .xz and .lzma formats" "http://tukaani.org/xz/" FALSE "" "Required for the .xz and .lzma format support in Ark")

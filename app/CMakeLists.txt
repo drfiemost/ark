@@ -35,6 +35,7 @@ install( FILES ${CMAKE_CURRENT_SOURCE_DIR}/ark.appdata.xml DESTINATION share/app
 install( FILES arkui.rc    DESTINATION ${DATA_INSTALL_DIR}/ark )
 
 ########### konqueror ark_extract_here plugin ###############
+set(FPHSA_NAME_MISMATCHED TRUE)
 macro_optional_find_package( LibKonq )
 macro_log_feature( LIBKONQ_FOUND "LIBKONQ" "libkonq library" "kdebase" FALSE "" "Need to integrate in konqueror" )
 
