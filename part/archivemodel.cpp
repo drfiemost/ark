@@ -712,7 +712,7 @@ void ArchiveModel::slotEntryRemoved(const QString & path)
     ArchiveNode *entry = m_rootNode->findByPath(entryFileName.split(QLatin1Char( '/' ), QString::SkipEmptyParts));
     if (entry) {
         ArchiveDirNode *parent = entry->parent();
-        QModelIndex index = indexForNode(entry);
+        //QModelIndex index = indexForNode(entry);
 
         beginRemoveRows(indexForNode(parent), entry->row(), entry->row());
 
