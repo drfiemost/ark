@@ -40,6 +40,8 @@
 #include <KMimeTypeTrader>
 #include <KServiceTypeTrader>
 
+#include <algorithm>
+
 static bool comparePlugins(const KService::Ptr &p1, const KService::Ptr &p2)
 {
     return (p1->property(QLatin1String( "X-KDE-Priority" )).toInt()) > (p2->property(QLatin1String( "X-KDE-Priority" )).toInt());
@@ -71,7 +73,7 @@ static KService::List findPluginOffers(const QString& filename, const QString& f
 
     if (!mimeType.isEmpty()) {
         offers = KMimeTypeTrader::self()->query(mimeType, QLatin1String( "Kerfuffle/Plugin" ), QLatin1String( "(exist Library)" ));
-        qSort(offers.begin(), offers.end(), comparePlugins);
+        std::sort(offers.begin(), offers.end(), comparePlugins);
     }
 
     return offers;
