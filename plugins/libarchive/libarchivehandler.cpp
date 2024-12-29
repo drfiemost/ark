@@ -114,7 +114,7 @@ bool LibArchiveInterface::list()
         return false;
     }
 
-    if (archive_read_open_filename(arch_reader.data(), QFile::encodeName(filename()), 10240) != ARCHIVE_OK) {
+    if (archive_read_open_filename(arch_reader.data(), QFile::encodeName(filename()).constData(), 10240) != ARCHIVE_OK) {
         emit error(i18nc("@info", "Could not open the archive <filename>%1</filename>, libarchive cannot handle it.",
                    filename()));
         return false;
@@ -180,7 +180,7 @@ bool LibArchiveInterface::copyFiles(const QVariantList& files, const QString& de
         return false;
     }
 
-    if (archive_read_open_filename(arch.data(), QFile::encodeName(filename()), 10240) != ARCHIVE_OK) {
+    if (archive_read_open_filename(arch.data(), QFile::encodeName(filename()).constData(), 10240) != ARCHIVE_OK) {
         emit error(i18nc("@info", "Could not open the archive <filename>%1</filename>, libarchive cannot handle it.",
                    filename()));
         return false;
@@ -378,7 +378,7 @@ bool LibArchiveInterface::addFiles(const QStringList& files, const CompressionOp
             return false;
         }
 
-        if (archive_read_open_filename(arch_reader.data(), QFile::encodeName(filename()), 10240) != ARCHIVE_OK) {
+        if (archive_read_open_filename(arch_reader.data(), QFile::encodeName(filename()).constData(), 10240) != ARCHIVE_OK) {
             emit error(i18n("The source file could not be read."));
             return false;
         }
@@ -563,7 +563,7 @@ bool LibArchiveInterface::deleteFiles(const QVariantList& files)
         return false;
     }
 
-    if (archive_read_open_filename(arch_reader.data(), QFile::encodeName(filename()), 10240) != ARCHIVE_OK) {
+    if (archive_read_open_filename(arch_reader.data(), QFile::encodeName(filename()).constData(), 10240) != ARCHIVE_OK) {
         emit error(i18n("The source file could not be read."));
         return false;
     }

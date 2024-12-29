@@ -459,10 +459,10 @@ void CliInterface::readStdout(bool handleAll)
     // TODO: The same check methods are called in handleLine(), this
     //       is suboptimal.
     bool foundErrorMessage =
-        (checkForErrorMessage(QLatin1String( lines.last() ), WrongPasswordPatterns) ||
-         checkForErrorMessage(QLatin1String( lines.last() ), ExtractionFailedPatterns) ||
-         checkForPasswordPromptMessage(QLatin1String(lines.last())) ||
-         checkForFileExistsMessage(QLatin1String( lines.last() )));
+        (checkForErrorMessage(QLatin1String( lines.last().constData() ), WrongPasswordPatterns) ||
+         checkForErrorMessage(QLatin1String( lines.last().constData() ), ExtractionFailedPatterns) ||
+         checkForPasswordPromptMessage(QLatin1String( lines.last().constData() )) ||
+         checkForFileExistsMessage(QLatin1String( lines.last().constData() )));
 
     if (foundErrorMessage) {
         handleAll = true;

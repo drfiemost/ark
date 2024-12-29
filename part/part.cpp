@@ -335,7 +335,7 @@ void Part::updateActions()
     const KConfigGroup conf(KGlobal::config(), "DirSelect Dialog");
     const QStringList dirHistory = conf.readPathEntry("History Items", QStringList());
 
-    for (int i = 0; i < qMin(10, dirHistory.size()); ++i) {
+    for (int i = 0; i < std::min(10, dirHistory.size()); ++i) {
         const KUrl dirUrl(dirHistory.at(i));
         QAction *newAction = menu->addAction(dirUrl.pathOrUrl());
         newAction->setData(dirUrl.pathOrUrl());

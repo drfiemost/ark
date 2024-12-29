@@ -59,7 +59,7 @@ static QString determineMimeType(const QString& filename)
     }
 
     const qint64 maxSize = 0x100000; // 1MB
-    const qint64 bufferSize = qMin(maxSize, file.size());
+    const qint64 bufferSize = std::min(maxSize, file.size());
     const QByteArray buffer = file.read(bufferSize);
 
     return KMimeType::findByNameAndContent(filename, buffer)->name();
